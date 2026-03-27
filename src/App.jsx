@@ -3,6 +3,7 @@ import { Moon, ShoppingCart, Sun } from 'lucide-react'
 import HeroSection from './components/HeroSection'
 import ProductShowcase from './components/ProductShowcase'
 import FoundersTouch from './components/FoundersTouch'
+import CustomerPortalSection from './components/CustomerPortalSection'
 import MiniCart from './components/MiniCart'
 import { figurines } from './MockData'
 
@@ -11,6 +12,7 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isLightMode, setIsLightMode] = useState(false)
   const productsRef = useRef(null)
+  const customerPortalRef = useRef(null)
 
   const cartCount = useMemo(
     () => cartItems.reduce((total, item) => total + item.quantity, 0),
@@ -60,6 +62,10 @@ function App() {
     productsRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const scrollToCustomerPortal = () => {
+    customerPortalRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   useEffect(() => {
     document.body.classList.toggle('light-theme-body', isLightMode)
 
@@ -78,6 +84,13 @@ function App() {
           </div>
 
           <div className="flex items-center gap-3">
+            <button
+              onClick={scrollToCustomerPortal}
+              className="rounded-full border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-200 transition hover:border-brand-accent/60 hover:text-brand-accent"
+            >
+              Espace client
+            </button>
+
             <button
               onClick={() => setIsLightMode((currentMode) => !currentMode)}
               className="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-200 transition hover:border-brand-accent/60 hover:text-brand-accent"
@@ -107,6 +120,7 @@ function App() {
         <HeroSection onExplore={scrollToProducts} />
         <ProductShowcase products={figurines} onAddToCart={addToCart} sectionRef={productsRef} />
         <FoundersTouch />
+        <CustomerPortalSection sectionRef={customerPortalRef} />
       </main>
 
       <MiniCart
