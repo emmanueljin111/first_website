@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState } from 'react'
-import { ShoppingCart } from 'lucide-react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Moon, ShoppingCart, Sun } from 'lucide-react'
 import HeroSection from './components/HeroSection'
 import ProductShowcase from './components/ProductShowcase'
 import FoundersTouch from './components/FoundersTouch'
@@ -9,6 +9,7 @@ import { figurines } from './MockData'
 function App() {
   const [cartItems, setCartItems] = useState([])
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isLightMode, setIsLightMode] = useState(false)
   const productsRef = useRef(null)
 
   const cartCount = useMemo(
@@ -59,27 +60,46 @@ function App() {
     productsRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  useEffect(() => {
+    document.body.classList.toggle('light-theme-body', isLightMode)
+
+    return () => {
+      document.body.classList.remove('light-theme-body')
+    }
+  }, [isLightMode])
+
   return (
-    <div className="min-h-screen bg-brand-background text-zinc-100">
+    <div className={`min-h-screen bg-brand-background text-zinc-100 ${isLightMode ? 'theme-light' : ''}`}>
       <header className="sticky top-0 z-30 border-b border-zinc-800/80 bg-zinc-950/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10 lg:px-12">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">Atelier Figurines</p>
-            <p className="text-lg font-medium text-zinc-100">Founder Series Store</p>
+            <p className="text-lg font-medium text-zinc-100">JIN MANGA</p>
           </div>
 
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="relative rounded-full border border-zinc-700 p-3 text-zinc-200 transition hover:border-brand-accent/60 hover:text-brand-accent"
-            aria-label="Open cart"
-          >
-            <ShoppingCart size={18} />
-            {cartCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-accent px-1 text-xs font-semibold text-zinc-900">
-                {cartCount}
-              </span>
-            )}
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setIsLightMode((currentMode) => !currentMode)}
+              className="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-200 transition hover:border-brand-accent/60 hover:text-brand-accent"
+              aria-label={isLightMode ? 'Switch to dark mode' : 'Switch to light mode'}
+            >
+              {isLightMode ? <Moon size={16} /> : <Sun size={16} />}
+              {isLightMode ? 'Dark' : 'Light'}
+            </button>
+
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative rounded-full border border-zinc-700 p-3 text-zinc-200 transition hover:border-brand-accent/60 hover:text-brand-accent"
+              aria-label="Open cart"
+            >
+              <ShoppingCart size={18} />
+              {cartCount > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-accent px-1 text-xs font-semibold text-zinc-900">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </header>
 

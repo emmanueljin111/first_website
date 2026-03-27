@@ -13,3 +13,66 @@ body {
   min-height: 100vh;
   background: radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.08), transparent 40%), #0f0f10;
 }
+
+body.light-theme-body {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.14), transparent 36%),
+    linear-gradient(180deg, #fffdf6 0%, #ffffff 48%, #f5f5f0 100%);
+}
+
+.theme-light {
+  color: #18181b;
+}
+
+.theme-light .bg-brand-background {
+  background:
+    radial-gradient(circle at top left, rgba(212, 175, 55, 0.14), transparent 28%),
+    linear-gradient(180deg, #fffef9 0%, #ffffff 48%, #f5f5f0 100%);
+}
+
+.theme-light .bg-brand-panel,
+.theme-light .bg-zinc-950,
+.theme-light .from-zinc-900,
+.theme-light .to-zinc-950 {
+  background: #ffffff !important;
+}
+
+.theme-light .bg-zinc-950\/90 {
+  background: rgba(255, 255, 255, 0.92) !important;
+}
+
+.theme-light .border-zinc-800,
+.theme-light .border-zinc-800\/80,
+.theme-light .border-zinc-700 {
+  border-color: rgba(24, 24, 27, 0.12) !important;
+}
+
+.theme-light .text-zinc-100,
+.theme-light .text-zinc-200 {
+  color: #18181b !important;
+}
+
+.theme-light .text-zinc-300,
+.theme-light .text-zinc-400,
+.theme-light .text-zinc-500,
+.theme-light .text-brand-muted {
+  color: #52525b !important;
+}
+
+.theme-light .bg-black\/70 {
+  background: rgba(24, 24, 27, 0.18) !important;
+}
+
+.theme-light .hover\:bg-zinc-800:hover {
+  background: #f1f1f3 !important;
+}
+
+.theme-light .hover\:text-zinc-100:hover,
+.theme-light .hover\:text-zinc-200:hover {
+  color: #18181b !important;
+}
+
+.theme-light .shadow-2xl,
+.theme-light .hover\:shadow-luxe:hover {
+  box-shadow: 0 24px 60px -30px rgba(15, 23, 42, 0.18) !important;
+}

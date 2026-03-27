@@ -5,13 +5,13 @@ function HeroSection({ onExplore }) {
     <section className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pb-16 pt-24 sm:px-10 lg:px-12">
       <p className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-accent/30 bg-brand-accent/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-brand-accent">
         <Sparkles size={14} />
-        Boutique Creator Series
+        Planète Pop Emmanuel Jin
       </p>
       <h1 className="max-w-4xl text-4xl font-semibold leading-tight text-zinc-100 sm:text-5xl lg:text-6xl">
         I craft statement figurines for collectors who want their shelves to speak before they do.
       </h1>
       <p className="max-w-2xl text-base text-brand-muted sm:text-lg">
-        Atelier Figurines merges gallery-grade sculpting with founder-led storytelling—every release is a chapter in a world only true collectors can complete.
+        Découvrez Jin Manga, la boutique incontournable pour vos figurines Funko Pop ! Marvel, Disney, Anime... Trouvez la Pop qui manque à votre collection. Livraison rapide.
       </p>
       <div className="flex flex-wrap items-center gap-4">
         <button

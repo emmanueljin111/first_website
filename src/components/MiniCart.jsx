@@ -1,4 +1,5 @@
 import { Minus, Plus, ShoppingBag, X } from 'lucide-react'
+import { formatCurrency } from '../utils/formatCurrency'
 
 function MiniCart({ isOpen, items, onClose, onIncrement, onDecrement, onRemove }) {
   const subtotal = items.reduce((total, item) => total + item.price * item.quantity, 0)
@@ -35,7 +36,7 @@ function MiniCart({ isOpen, items, onClose, onIncrement, onDecrement, onRemove }
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="font-medium text-zinc-100">{item.name}</h3>
-                    <p className="text-sm text-brand-accent">${item.price}</p>
+                    <p className="text-sm text-brand-accent">{formatCurrency(item.price)}</p>
                   </div>
                   <button onClick={() => onRemove(item.id)} className="text-xs uppercase tracking-[0.15em] text-zinc-500 hover:text-zinc-200">
                     Remove
@@ -58,7 +59,7 @@ function MiniCart({ isOpen, items, onClose, onIncrement, onDecrement, onRemove }
         <div className="mt-6 space-y-4 border-t border-zinc-800 pt-5">
           <div className="flex items-center justify-between text-sm text-zinc-300">
             <span>Subtotal</span>
-            <span className="text-lg font-semibold text-brand-accent">${subtotal}</span>
+            <span className="text-lg font-semibold text-brand-accent">{formatCurrency(subtotal)}</span>
           </div>
           <button className="w-full rounded-full bg-brand-accent py-3 text-sm font-semibold uppercase tracking-[0.14em] text-zinc-900 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40" disabled={items.length === 0}>
             Checkout

@@ -1,3 +1,5 @@
+import { formatCurrency } from '../utils/formatCurrency'
+
 function ProductCard({ product, onAddToCart }) {
   return (
     <article className="group overflow-hidden rounded-2xl border border-zinc-800 bg-brand-panel transition duration-300 hover:-translate-y-1 hover:border-brand-accent/50 hover:shadow-luxe">
@@ -18,7 +20,7 @@ function ProductCard({ product, onAddToCart }) {
           <p className="mt-2 text-sm leading-relaxed text-zinc-400">{product.description}</p>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-lg font-semibold text-brand-accent">${product.price}</p>
+          <p className="text-lg font-semibold text-brand-accent">{formatCurrency(product.price)}</p>
           <button
             onClick={() => onAddToCart(product)}
             className="rounded-full border border-brand-accent/50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-accent transition hover:bg-brand-accent hover:text-zinc-900"
